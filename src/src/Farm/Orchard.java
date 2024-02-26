@@ -11,12 +11,28 @@ public abstract class Orchard {
     public Orchard() {}
 
     public Orchard(final String newName) {
-        if (newName == null || newName.isEmpty()) { // only white space?
+        if (newName == null || newName.trim().isEmpty()) { // avoid only whitespace
             throw new IllegalArgumentException("Orchards must have names!");
         } else {
             name = newName;
         }
-        treeList = new ArrayList<>(); //?
+        treeList = new ArrayList<>(); // initialize an ArrayList
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Tree> getTreeList() {
+        return treeList;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTreeList(ArrayList<Tree> treeList) {
+        this.treeList = treeList;
     }
 
     public abstract void plantSomeTrees(int quantity);
