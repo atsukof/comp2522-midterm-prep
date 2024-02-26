@@ -1,4 +1,4 @@
-package Farm;
+package ca.bcit.comp2522.farm;
 
 public class AppleOrchard extends Orchard {
     public AppleOrchard() {}
@@ -14,6 +14,11 @@ public class AppleOrchard extends Orchard {
             treeList.add(newTree);
             counter++;
         }
-
     }
+
+    @Override
+    public String toString() {
+        return "AppleOrchard{}";
+    }
+
 }

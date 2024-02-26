@@ -1,6 +1,4 @@
-package Farm;
-
-import java.util.Random;
+package ca.bcit.comp2522.farm;
 
 public class AppleFarm extends Farm{
 
@@ -16,5 +14,10 @@ public class AppleFarm extends Farm{
             orchardList.add(newOrchard);
             orchardCounter++;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "AppleFarm{}";
     }
 }

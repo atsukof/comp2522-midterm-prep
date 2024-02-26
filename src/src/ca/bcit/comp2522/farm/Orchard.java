@@ -1,20 +1,22 @@
-package Farm;
+package ca.bcit.comp2522.farm;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
 public abstract class Orchard {
     protected String name;
-    protected ArrayList<Tree> treeList;
+    protected final ArrayList<Tree> treeList;
 
-    public Orchard() {}
+    public Orchard() {
+        treeList = new ArrayList<>();
+    }
 
     public Orchard(final String newName) {
         if (newName == null || newName.trim().isEmpty()) { // avoid only whitespace
             throw new IllegalArgumentException("Orchards must have names!");
         } else {
-            name = newName;
+            setName(newName);
         }
         treeList = new ArrayList<>(); // initialize an ArrayList
     }
@@ -27,12 +29,8 @@ public abstract class Orchard {
         return treeList;
     }
 
-    public void setName(String name) {
+    public final void setName(String name) {
         this.name = name;
-    }
-
-    public void setTreeList(ArrayList<Tree> treeList) {
-        this.treeList = treeList;
     }
 
     public abstract void plantSomeTrees(int quantity);
@@ -44,5 +42,26 @@ public abstract class Orchard {
             harvestCount += newHarvest;
         }
         return harvestCount;
+    }
+
+    @Override
+    public String toString() {
+        return "Orchard{" +
+                "name='" + name + '\'' +
+                ", treeList=" + treeList +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Orchard orchard = (Orchard) o;
+        return Objects.equals(getName(), orchard.getName()) && Objects.equals(getTreeList(), orchard.getTreeList());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getTreeList());
     }
 }
